@@ -1,0 +1,58 @@
+<div class="container-fluid">
+    <form class="form-validate" method="post" action="{BASE_URL}admin/administracion/personales/process_edit">
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <div class="card">
+                    <div class="card-content">
+                        <h4 class="card-title">{Personales_datos_personal}</h4>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group label-floating has-success">
+                                    <label class="control-label">{personales_nombre} *</label>
+                                    <input class="form-control validate required" name="nombre" id="nombre" type="text" autocomplete="false" value="{nombre}">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group label-floating has-success">
+                                    <label class="control-label">{personales_paterno} *</label>
+                                    <input class="form-control validate required" name="paterno" id="paterno" type="text" autocomplete="false" value="{paterno}">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group label-floating has-success">
+                                    <label class="control-label">{personales_materno} </label>
+                                    <input class="form-control" name="materno" id="materno" type="text" autocomplete="false" value="{materno}">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group label-floating has-success">
+                                    <label class="control-label">{personales_correo_personal} *</label>
+                                    <input class="form-control validate required" name="correo_emp" id="correo_emp" type="text" autocomplete="false" value="{correo_emp}">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group label-floating has-success">
+                                    <label class="control-label">{personales_tel_movil}</label>
+                                    <input class="form-control" name="tel_movil" id="tel_movil" type="text" autocomplete="false" value="{tel_movil}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="category">
+                            <small>{general_required_fields}</small><br>
+                            <small>{personales_msg_expiracion}</small>
+                        </div>
+                        <div class="pull-right">
+                            <a href="{BASE_URL}admin/personales" class="btn btn-link text-danger">
+                                {general_cancelar}
+                            </a>
+                            <input type="hidden" name="id_personal" value="{id_personal}">
+                            <button type="submit" class="btn btn-success btn-fill submit">{general_guardar}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

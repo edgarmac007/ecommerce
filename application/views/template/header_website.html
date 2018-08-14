@@ -1,0 +1,98 @@
+<meta charset="{APP_CHARSET}"/>
+<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png" />
+<link rel="icon" type="image/png" href="assets/img/favicon.png" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>{APP_TITLE}</title>
+<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+<meta name="viewport" content="width=device-width" />
+<!-- Bootstrap core CSS     -->
+<link href="{BASE_URL}assets/templates/Material_Dashboard/css/bootstrap.min.css" rel="stylesheet" />
+<!--  Material Dashboard CSS    -->
+<!--  CSS for Demo Purpose, don't include it in your project     -->
+<!--     Fonts and icons     -->
+<link href="{BASE_URL}assets/vendor/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Parisienne' rel='stylesheet' type='text/css'>
+
+<!--    CSS for sweetalert2    -->
+<link rel="stylesheet" type="text/css" href="{BASE_URL}assets/vendor/sweetalert2/dist/sweetalert2.css">
+
+<!--    CSS general and custom for SYSTEM     -->
+<link rel="stylesheet" type="text/css" href="{BASE_URL}assets/css/general.css">
+<link rel="stylesheet" type="text/css" href="{BASE_URL}assets/css/custom.css">
+
+<!-- other -->
+<link rel="stylesheet" type="text/css" href="{BASE_URL}assets/css/stylesheet.css?x=01011001">
+<link rel="stylesheet" type="text/css" href="{BASE_URL}assets/css/flaticon/flaticon.css">
+
+<!-- JS INCLUDES -->
+<script src="{BASE_URL}assets/vendor/jquery/jquery-3.2.1.js"></script>
+<script src="{BASE_URL}assets/vendor/summernote/test/libs/bootstrap.js"></script>
+
+<script type="text/javascript">
+    var language = '{LANG}';
+</script>
+
+<script src="{BASE_URL}assets/vendor/modernizr/modernizr.custom.js"></script>
+<script type="text/javascript" src="http://www.arbibe.com.mx/static/js/cycle2.js"></script>
+<script type="text/javascript" src="{BASE_URL}assets/vendor/query_hoverdir/query.hoverdir.js?id=10"></script> 
+<script type="text/javascript" src="{BASE_URL}assets/js/website/global.js?id=10"></script> 
+<!-- Sweet Alert 2 plugin -->
+<script src="{BASE_URL}assets/vendor/sweetalert2/dist/sweetalert2_2.js"></script>
+
+
+<!-- Includes JS Files of application -->
+{INCLUDES_HEADDER}
+<div class="contrainer-fluid">
+  <header id="web_header" class="container-fluid">
+      <div class="header-menu row">
+          <div class="container">
+              <div class="col-md-3 col-sm-2 hidden-xs content-logo">
+                  <a href="{% url 'home' %}" class="logo text-center">
+                      <img class="img-responsive logo" src="{BASE_URL}/assets/img/website/logotipo-arbibe.png" title="" alt="">
+                  </a>
+              </div>
+              <div class="col-md-9 web-menu pull-right col-sm-10 col-xs-12">
+                  <div class="row hidden-xs">
+                      <div class="language col-sm-12">
+                          <div id="language-select">
+                            {LANGUAGE}
+                          </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                        <nav class="navbar navbar-default" role="navigation">
+                            <div class="con-items pull-right col-xs-12">
+                              <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                    	 <span class="sr-only"></span>
+                                    	 <span class="icon-bar"></span>
+                                    	 <span class="icon-bar"></span>
+                                    	 <span class="icon-bar"></span>
+                                    </button>
+                                    <a href="{% url 'home' %}" class="navbar-brand visible-xs">
+                                    	 <img class="img-responsive logo" src="{BASE_URL}/assets/img/website/logotipo-arbibe.png" title="" alt="">
+                                    </a>
+                              </div>
+                              <div class="row collapse navbar-collapse pull-right col-xs-12 col-sm-12" id="bs-example-navbar-collapse-1">
+                                  <ul class="nav navbar-nav text-center pull-right menu-principal col-xs-12 col-md-12 col-sm-12">
+                                      {menu_website}
+                                      <li class="separator visible-xs"></li>
+                                      <li class="visible-xs">
+                                        <div class="dropdown">
+                                            <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <span class="caret"></span>
+                                            </button>
+                                        </div>
+                                      </li>
+                                  </ul>
+                              </div><!-- /.navbar-collapse -->
+                            </div><!-- /.container-fluid -->
+                        </nav>
+                    </div>
+                  </div>
+              </div>
+          </div>  
+      </div>
+  </header>      
+  <!-- content class -->
+  <div class="arbibe_wrapper container-fluid">

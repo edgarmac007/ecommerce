@@ -1,0 +1,31 @@
+.no-pt {
+    padding-top: 0px !important;
+}
+
+.no-pr {
+    padding-right: 0px !important;
+}
+
+.no-pb {
+    padding-bottom: 0px !important;
+}
+
+.no-pl {
+    padding-left: 0px !important;
+}
+
+.no-mt {
+    margin-top: 0px !important;
+}
+
+.no-mr {
+    margin-right: 0px !important;
+}
+
+.no-mb {
+    margin-bottom: 0px !important;
+}
+
+.no-ml {
+    margin-left: 0px !important;
+}

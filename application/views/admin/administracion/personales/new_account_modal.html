@@ -1,0 +1,97 @@
+<div class="modal fade" id="new-account" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <form id="form-validate">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="data-personales">{Personales_datos_personal}</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group label-floating has-success">
+                                <label class="control-label">{personales_nombre} *</label>
+                                <input type="hidden" name="id_personal" id="id_personal" class="ignore">
+                                <input class="form-control validate required" name="nombre" id="nombre" type="text" readonly value="val">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group label-floating has-success">
+                                <label class="control-label">{personales_paterno} *</label>
+                                <input class="form-control validate required" name="paterno" id="paterno" type="text" readonly value="val">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group label-floating has-success">
+                                <label class="control-label">{personales_materno} </label>
+                                <input class="form-control" name="materno" id="materno" type="text" readonly value="val">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group label-floating has-success">
+                                <label class="control-label">{personales_area} *</label>
+                                <input class="form-control validate required" name="area" id="area" type="text" readonly value="val">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group label-floating has-success">
+                                <label class="control-label">{personales_correo} *</label>
+                                <input class="form-control validate required" name="correo" id="correo" type="text" readonly value="val">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group label-floating has-success">
+                                <label class="control-label">{personales_telefono} *</label>
+                                <input class="form-control validate required tel" name="tel_emp" id="tel_emp" type="text" readonly value="val">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="no-mb">
+                <div class="modal-header no-pt">
+                    <h4 class="modal-title" id="data-user">{usuario_username}</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group label-floating has-success">
+                                <label class="control-label">{personales_rol} </label>
+                                {select_roles}
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group label-floating has-success">
+                                <label class="control-label">{personales_perfil} </label>
+                                {select_perfiles}
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group label-floating has-success">
+                                <label class="control-label">{personales_language} </label>
+                                {select_langs}
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group label-floating has-success">
+                                <label class="control-label">{personales_dias_expiracion} *</label>
+                                <input class="form-control validate required digits" name="dias_expiracion" id="dias_expiracion" type="text" autocomplete="off" value="91">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="category">
+                        <small>{general_required_fields}</small><br>
+                        <small>{personales_msg_expiracion}</small>
+                    </div>
+                    <button type="button" class="btn btn-link text-danger" data-dismiss="modal">
+                        {general_cancelar}
+                    </button>
+                    <button type="submit" class="btn btn-success submit">{general_guardar}</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

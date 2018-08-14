@@ -1,0 +1,259 @@
+/**
+ * Styles general para el template de material dashboard
+ */
+ body.wrapper-full-page > .wrapper > .main-panel {
+ 	width: calc(100%);
+ }
+
+mdb-skin-custom .side-nav {
+    background-color: #293a48;
+    background-image: url(https://mdbootstrap.com/img/Photos/Others/sidenav-dark.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.secondary-color-dark {
+    background-color: #93C!important;
+}
+
+.primary-color-dark {
+    background-color: #0d47a1!important;
+}
+
+form .form-group .btn-group {
+	margin: 0 0;
+}
+
+form .form-group [class^=load-] .dropdown-menu.open{
+    width: 100%;
+}
+
+button.btn.btn-link, 
+button.btn.btn-link:active, 
+button.btn.btn-link:focus, 
+a.btn.btn-link,
+a.btn.btn-link:active, 
+a.btn.btn-link:focus {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background-color: transparent;
+    color: #337ab7;
+}
+
+.modal-footer .category {
+    text-align: left;
+    display: inline-block;
+    float: left;
+}
+
+.datatables .btn-actions {
+    display: inline-block;
+}
+
+/** MENU ACTIVE DESING **/
+.navbar[data-active-color="green"] li.open ul li > a:hover {
+    background-color: #4caf50;
+    box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(76, 175, 80, 0.4);
+}
+
+.navbar[data-active-color="green"] li.open ul li.active > a {
+    box-shadow: none;
+}
+/** END MENU ACTIVE DESING **/
+
+/** BOOSTRAP-SELECT **/
+.bootstrap-select .dropdown-menu li.active a, 
+.bootstrap-select .dropdown-menu li a:hover, 
+.bootstrap-select .dropdown-menu li a:focus, 
+.bootstrap-select .dropdown-menu li a:active {
+    background-color: #9c27b0;
+    color: #FFFFFF;
+}
+
+.bootstrap-select ul.dropdown-menu.inner[aria-expanded="true"] li {
+    position: relative;
+}
+
+.bootstrap-select ul.dropdown-menu.inner[aria-expanded="false"] li {
+    position: absolute;
+}
+/** END BOOSTRAP-SELECT **/
+
+/** PROGRESS BAR INDETERMINATE **/
+
+.progress {
+    font-size: .75rem;
+    line-height: 1rem;
+    text-align: center;
+    border-radius: .25rem;
+}
+
+.progress,
+.streak {
+    position: relative;
+    display: block;
+    overflow: hidden;
+}
+
+.progress {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    width: 100%;
+    height: 4px;
+    margin-bottom: 1rem;
+    background-color: #eee;
+}
+
+.progress .indeterminate {
+    background-color: #5cb85c;
+}
+
+.progress .indeterminate:after,
+.progress .indeterminate:before {
+    position: absolute;
+    background-color: inherit;
+    left: 0;
+    will-change: left,right;
+    bottom: 0;
+    top: 0;
+    content: '';
+}
+
+.progress .indeterminate:before {
+    -webkit-animation: indeterminate 0.8s cubic-bezier(.65,.815,.735,.395) infinite;
+    animation: indeterminate 0.8s cubic-bezier(.65,.815,.735,.395) infinite;
+}
+
+.progress .indeterminate:after {
+    -webkit-animation: indeterminate-short 0.8s cubic-bezier(.165,.84,.44,1) infinite;
+    animation: indeterminate-short 0.8s cubic-bezier(.165,.84,.44,1) infinite;
+    -webkit-animation-delay: 0.8s;
+    animation-delay: 0.8s;
+}
+
+@-webkit-keyframes indeterminate {
+    0% {
+        left: -35%;
+        right: 100%
+    }
+
+    100%,60% {
+        left: 100%;
+        right: -90%
+    }
+}
+
+@keyframes indeterminate {
+    0% {
+        left: -35%;
+        right: 100%
+    }
+
+    100%,60% {
+        left: 100%;
+        right: -90%
+    }
+}
+
+@-webkit-keyframes indeterminate-short {
+    0% {
+        left: -200%;
+        right: 100%
+    }
+
+    100%,60% {
+        left: 107%;
+        right: -8%
+    }
+}
+
+@keyframes indeterminate-short {
+    0% {
+        left: -200%;
+        right: 100%
+    }
+
+    100%,60% {
+        left: 107%;
+        right: -8%
+    }
+}
+/** END PROGRESS BAR INDETERMINATE **/
+
+/**TEXT COLOR**/
+.text-primary {
+    color: #9c27b0 !important;
+}
+
+.text-secondary {
+    color: #868e96!important;
+}
+
+.text-success {
+    color: #4caf50 !important;
+}
+
+.text-danger {
+    color: #f44336 !important;
+}
+
+.text-warning {
+    color: #ff9800 !important;
+}
+
+.text-info {
+    color: #00bcd4 !important;
+}
+
+.text-dark {
+    color: #343a40!important;
+}
+
+.text-default {
+    color: #999999 !important;
+}
+/**END TEXT COLOR**/
+
+/**CUSTOM LENGHT TITLE SWEET ALERT**/
+.wa-custom-title-1 h2 {
+    font-size: 2.5rem;
+}
+/**END CUSTOM LENGHT TITLE SWEET ALERT**/
+
+/**FORM ERROR**/
+form .form-group .error::before {
+    content: '!';
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #ea7d7d;
+    color: #fff;
+    line-height: 24px;
+    text-align: center;
+    margin: 5px 5px 0 0;
+}
+
+form .error {
+    color: #ea7d7d;
+}
+/**END FORM ERROR**/
+
+/**INPUT SLIDERS IMAGE**/
+.content-sliders .input-file-close {
+    margin: 0 !important;
+    position: absolute !important;
+    top: 0;
+    right: 0.5px;
+}
+
+.content-sliders .card-image {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.fileinput .fileinput-preview img {
+    width: auto;
+}
+/**END INPUT SLIDERS IMAGE**/

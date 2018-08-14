@@ -1,0 +1,10 @@
+application/cache/*
+application/cfg/*
+
+asstes/tmp/*
+assets/img/uploads/*
+
+logs/*
+
+user_guide/*
+.phpintel/*

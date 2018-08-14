@@ -1,0 +1,130 @@
+<div class="container-fluid">
+    <form class="form-validate" method="post" action="{BASE_URL}admin/administracion/personales/process_edit">
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <div class="card">
+                    <div class="card-content">
+                        <h4 class="card-title">{Personales_datos_personal}</h4>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group label-floating has-success">
+                                    <label class="control-label">{personales_nombre} *</label>
+                                    <input class="form-control validate required" name="nombre" id="nombre" type="text" autocomplete="false" value="{nombre}">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group label-floating has-success">
+                                    <label class="control-label">{personales_paterno} *</label>
+                                    <input class="form-control validate required" name="paterno" id="paterno" type="text" autocomplete="false" value="{paterno}">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group label-floating has-success">
+                                    <label class="control-label">{personales_materno} </label>
+                                    <input class="form-control" name="materno" id="materno" type="text" autocomplete="false" value="{materno}">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group label-floating has-success">
+                                    <label class="control-label">{personales_correo_personal} *</label>
+                                    <input class="form-control validate required" name="correo_personal" id="correo_personal" type="text" autocomplete="false" value="{correo_personal}">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group label-floating has-success">
+                                    <label class="control-label">{personales_tel_movil}</label>
+                                    <input class="form-control" name="tel_movil" id="tel_movil" type="text" autocomplete="false" value="{tel_movil}">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group label-floating has-success">
+                                    <label class="control-label">{personales_tel_casa} </label>
+                                    <input class="form-control validate" name="tel_casa" id="tel_casa" type="text" autocomplete="false" value="{tel_casa}">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group label-floating has-success">
+                                    <label class="control-label">{general_estado} *</label>
+                                    {select_estados}
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group label-floating has-success">
+                                    <label class="control-label">{general_municipio} *</label>
+                                    <div class="load-municipios">{select_municipios}</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group label-floating has-success">
+                                    <label class="control-label">{general_localidad} *</label>
+                                    <div class="load-localidades">{select_localidades}</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group label-floating has-success">
+                                    <label class="control-label">{general_codigo_postal} *</label>
+                                    <input class="form-control validate required" name="codigo_postal" id="codigo_postal" type="text" autocomplete="false" value="{codigo_postal}">
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="form-group label-floating has-success">
+                                    <label class="control-label">{general_direccion} *</label>
+                                    <textarea class="form-control validate required" rows="3" name="direccion" id="direccion" autocomplete="false">{direccion}</textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="data-user"><hr>
+                            <h4 class="card-title">{Personales_datos_empleado}</h4>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group label-floating has-success">
+                                        <label class="control-label">{personales_area} *</label>
+                                        {select_areas}
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group label-floating has-success">
+                                        <label class="control-label">{personales_correo} *</label>
+                                        <input class="form-control validate required email" name="correo" id="correo" type="text" autocomplete="false" value="{correo_emp}" readonly="">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group label-floating has-success">
+                                        <label class="control-label">{personales_telefono} *</label>
+                                        <input class="form-control validate required tel" name="tel_emp" id="tel_emp" type="text" autocomplete="false" value="{tel_emp}">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group label-floating has-success">
+                                        <label class="control-label">{personales_ext} </label>
+                                        <input class="form-control validate digits" name="ext" id="ext" type="text" autocomplete="false" value="{ext}">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group label-floating has-success">
+                                        <label class="control-label">{personales_movil} </label>
+                                        <input class="form-control validate tel" name="tel_movil_emp" id="tel_movil_emp" type="text" autocomplete="false" value="{tel_movil_emp}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="category">
+                            <small>{general_required_fields}</small><br>
+                            <small>{personales_msg_expiracion}</small>
+                        </div>
+                        <div class="pull-right">
+                            <a href="{BASE_URL}personales" class="btn btn-link text-danger">
+                                {general_cancelar}
+                            </a>
+                            <input type="hidden" name="id_personal" value="{id_personal}">
+                            <button type="submit" class="btn btn-success btn-fill submit">{general_guardar}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

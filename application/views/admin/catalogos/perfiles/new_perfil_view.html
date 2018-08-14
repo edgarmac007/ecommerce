@@ -1,0 +1,55 @@
+<div class="container-fluid">
+    <form class="form-validate" method="post" action="{BASE_URL}admin/catalogos/perfiles/process_save">
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="row">
+                            <div class="col-sm-8 col-md-8">
+                                <div class="form-group label-floating has-success">
+                                    <label for="perfil" class="control-label">{perfil_perfil} *</label>
+                                    <input type="text" id="perfil" class="form-control validate required" name="perfil">
+                                </div>
+                            </div>
+                            <div class="col-sm-4 col-md-4">
+                                <a href="{BASE_URL}perfiles" class="btn btn-link text-danger">
+                                    {general_cancelar}
+                                </a>
+                                <button type="submit" class="btn btn-success submit">{general_guardar}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 col-md-6">
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="rose">
+                        <i class="material-icons">menu</i>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">{perfil_menu_vert}</h4>
+                        <div class="tree">
+                            {menu_vertical}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="rose">
+                        <i class="material-icons">menu</i>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">{perfil_menu_hori}</h4>
+                        <div class="tree">
+                            {menu_horizontal}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
