@@ -44,7 +44,7 @@ class Empresas extends MY_Controller {
 				,'empresa' 		=> $row['empresa']
 				,'razon_social' => $row['razon_social']
 				,'rfc' 			=> $row['rfc']
-				,'action' 		=> ''
+				,'action' 		=> self::build_icon_empresas($row)
 			);
 		}
 
@@ -59,7 +59,20 @@ class Empresas extends MY_Controller {
 	}
 
 	private function build_icon_empresas(array $data) {
+		$buttons = array(
+			array(
+				'tooltip' 	=> lang('general_editar')
+				,'class'	=> 'btn-warning edit'
+				,'icon'		=> '<i class="material-icons">mode_edit</i>'
+			)
+			,array(
+				'tooltip' 	=> lang('general_borrar')
+				,'class'	=> 'btn-danger drop'
+				,'icon'		=> '<i class="material-icons">delete</i>'
+			)
+		);
 
+		return build_actions($buttons);
 	}
 
 	/**
@@ -119,6 +132,34 @@ class Empresas extends MY_Controller {
 				 'success' 	=> TRUE
 				,'title' 	=> lang('general_exito')
 				,'msg' 		=> lang('empresas_save_success')
+				,'type' 	=> 'success'
+			);
+		} catch (Exception $e) {
+			$response = array(
+				'success' 	=> FALSE
+				,'title' 	=> lang('general_error')
+				,'msg' 		=> $e->getMessage()
+				,'type' 	=> 'error'
+			);
+		}
+    	
+    	echo json_encode($response);
+	}
+
+	public function process_drop_empresa() {
+		try {
+			$sql_data = array(
+				 'id_empresa' 		=> $this->input->post('id_empresa')
+			    ,'id_usuario_edit' 	=> $this->session->userdata('id_usuario')
+				,'activo' 			=> 0
+			);
+			$update = $this->db_empresas->update_empresa($sql_data);
+			$update OR set_exception();
+
+			$response = array(
+				 'success' 	=> TRUE
+				,'title' 	=> lang('general_exito')
+				,'msg' 		=> lang('empresas_delete_success')
 				,'type' 	=> 'success'
 			);
 		} catch (Exception $e) {

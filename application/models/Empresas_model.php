@@ -30,6 +30,21 @@ class Empresas_model extends MY_Model {
 
 		return FALSE;
 	}
+
+	public function update_empresa(array $data) {
+		$tbl = $this->tbl;
+
+		$this->db->where('id_empresa', $data['id_empresa'])
+			->update($tbl['empresas'], $data);
+		$error = $this->db->error();
+
+		if (!$error['message']) {
+			$this->register_log();
+			return TRUE;
+		}
+
+		return FALSE;
+	}
 }
 
 /* End of file Empresas_model.php */
