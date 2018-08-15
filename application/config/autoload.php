@@ -89,7 +89,7 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array('url', 'language', 'string');
+$autoload['helper'] = array('url', 'language', 'string', 'system', 'admin');
 
 /*
 | -------------------------------------------------------------------
@@ -132,4 +132,9 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array();
+$autoload['model'] = array(
+	 'menu/menu_model' 		=> 'db_menu'
+	,'Languages_model' 		=> 'db_lang'
+	,'Municipios_model' 	=> 'db_municipios'
+	,'Localidades_model' 	=> 'db_localidades'
+);

@@ -32,6 +32,8 @@ class MY_Model extends CI_Model {
 		$this->tbl['roles'] 		= "$db1.cat_roles";
 
 		//TABLES
+		$this->tbl['empresas'] 		= "$db1.tbl_empresas";
+		$this->tbl['sucursales'] 	= "$db1.tbl_sucursales";
 
 
 		//VIEWS

@@ -2650,7 +2650,7 @@ INSERT INTO `sys_log` VALUES (93, 1, '::1', 'Mozilla/5.0 (X11; Linux x86_64) App
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_menus`;
 CREATE TABLE `sys_menus`  (
-  `id_menu` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Esta tabla identifica los men├║s que se muestran en la p├ígina de sicac',
+  `id_menu` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Esta tabla identifica los men├║s que se muestran en la p├ígina del sistema',
   `id_padre` int(11) NOT NULL DEFAULT 0,
   `short_key` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `nivel` enum('padre','padre_n2','hijo','simple') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
@@ -2664,7 +2664,7 @@ CREATE TABLE `sys_menus`  (
   `timestamp` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `activo` tinyint(1) NULL DEFAULT 1,
   PRIMARY KEY (`id_menu`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of sys_menus
@@ -2675,10 +2675,11 @@ INSERT INTO `sys_menus` VALUES (3, 0, 'menu_user', 'padre', 'HORIZONTAL', 'dropd
 INSERT INTO `sys_menus` VALUES (4, 3, 'menu_cuenta', 'hijo', 'HORIZONTAL', NULL, NULL, 'admin/cuenta', '', 1, 'Enlace para ir al perfil', '2017-02-25 15:20:18', 0);
 INSERT INTO `sys_menus` VALUES (5, 3, 'menu_loguot', 'hijo', 'HORIZONTAL', NULL, NULL, 'admin/logout', '', 2, 'Enlace para desloguearse', '2017-02-25 15:20:57', 1);
 INSERT INTO `sys_menus` VALUES (6, 0, 'menu_catalogos', 'padre', 'VERTICAL', 'collapse', 3, 'admin/catalogos', 'assignment', 1, NULL, '2017-05-25 00:07:14', 1);
-INSERT INTO `sys_menus` VALUES (7, 10, 'menu_usuarios', 'hijo', 'VERTICAL', NULL, NULL, 'admin/usuarios', '', 2, 'admin users', '2017-06-24 16:42:11', 1);
-INSERT INTO `sys_menus` VALUES (8, 10, 'menu_perfiles', 'hijo', 'VERTICAL', NULL, 4, 'admin/perfiles', '', 1, 'admin perfiles', '2017-06-24 16:44:37', 1);
-INSERT INTO `sys_menus` VALUES (9, 10, 'menu_personales', 'hijo', 'VERTICAL', NULL, NULL, 'admin/personales', '', 1, 'personales cun cuenta para el acceso al sstema', '2017-07-13 00:03:02', 1);
+INSERT INTO `sys_menus` VALUES (7, 10, 'menu_usuarios', 'hijo', 'VERTICAL', NULL, 4, 'admin/usuarios', '', 4, 'admin users', '2017-06-24 16:42:11', 1);
+INSERT INTO `sys_menus` VALUES (8, 10, 'menu_perfiles', 'hijo', 'VERTICAL', NULL, 3, 'admin/perfiles', '', 3, 'admin perfiles', '2017-06-24 16:44:37', 1);
+INSERT INTO `sys_menus` VALUES (9, 10, 'menu_personales', 'hijo', 'VERTICAL', NULL, 2, 'admin/personales', '', 2, 'personales cun cuenta para el acceso al sstema', '2017-07-13 00:03:02', 1);
 INSERT INTO `sys_menus` VALUES (10, 0, 'menu_admin', 'padre', 'VERTICAL', 'collapse', 2, 'admin/administracion', 'assignment_turned_in', 1, NULL, '2017-07-26 18:58:11', 1);
+INSERT INTO `sys_menus` VALUES (11, 10, 'menu_empresas', 'hijo', 'VERTICAL', NULL, 1, 'admin/empresas', '', 1, 'Administración de las empresas', '2018-08-14 21:18:40', 1);
 
 -- ----------------------------
 -- Table structure for sys_municipios
@@ -2838,6 +2839,59 @@ CREATE TABLE `tbl_archivos`  (
   `comentario` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id_archivo`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+CREATE TABLE `tbl_empresas` (
+  `id_empresa` int(11) NOT NULL AUTO_INCREMENT,
+  `id_pais` int(11) DEFAULT '1',
+  `id_estado` int(11) NOT NULL,
+  `id_municipio` int(11) NOT NULL,
+  `id_localidad` int(11) NOT NULL,
+  `empresa` varchar(255) DEFAULT NULL,
+  `razon_social` varchar(255) DEFAULT NULL,
+  `rfc` varchar(255) DEFAULT NULL,
+  `registro_patronal` text,
+  `calle` text,
+  `num_calle` varchar(10) DEFAULT NULL,
+  `telefono` varchar(20) DEFAULT NULL,
+  `id_usuario` int(11) DEFAULT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `id_usuario_edit` int(11) DEFAULT NULL,
+  `timestamp_edit` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `activo` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id_empresa`) USING BTREE,
+  KEY `id_pais` (`id_pais`),
+  KEY `id_estado` (`id_estado`),
+  KEY `id_municipio` (`id_municipio`),
+  KEY `id_localidad` (`id_localidad`),
+  KEY `id_usuario` (`id_usuario`),
+  KEY `activo` (`activo`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+
+CREATE TABLE `tbl_sucursales` (
+  `id_sucursal` int(11) NOT NULL AUTO_INCREMENT,
+  `id_empresa` int(11) NOT NULL,
+  `id_pais` int(11) NOT NULL DEFAULT '1',
+  `id_estado` int(11) NOT NULL,
+  `id_municipio` int(11) NOT NULL,
+  `id_localidad` int(11) NOT NULL,
+  `sucursal` varchar(255) DEFAULT NULL,
+  `calle` text,
+  `num_calle` varchar(10) DEFAULT NULL,
+  `telefono` varchar(20) DEFAULT NULL,
+  `id_usuario` int(11) DEFAULT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `id_usuario_edit` int(11) DEFAULT NULL,
+  `timestamp_edit` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `activo` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id_sucursal`),
+  KEY `id_empresa` (`id_empresa`),
+  KEY `id_pais` (`id_pais`),
+  KEY `id_estado` (`id_estado`),
+  KEY `id_municipio` (`id_municipio`),
+  KEY `id_localidad` (`id_localidad`),
+  KEY `id_usuario` (`id_usuario`),
+  KEY `activo` (`activo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- View structure for vw_personales_usuarios

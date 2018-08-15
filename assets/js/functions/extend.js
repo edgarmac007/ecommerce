@@ -97,19 +97,26 @@
 		,loadSelectForm: function(options) {
 			// Default settings:
 		    var settings = {
-		        select: null, 	//Identidicador del select(id, class, etc)
-		        content: null, 	//Identidicador del ontenedor del select(id, class, etc) para mostrar el loading
-		        loading: '<div class="progress secondary-color-dark"><div class="indeterminate"></div></div>'
+		         select: false 	//Identidicador del select(id, class, etc)
+		        ,content: this 	//Identidicador del ontenedor del select(id, class, etc) para mostrar el loading
+		        ,loading: '<div class="progress secondary-color-dark"><div class="indeterminate"></div></div>'
+		        ,required: false
 		    };
-		    $.extend(settings, options);
 
-			$(this).sendRequestAjax({
-				dataType: 'html'
+		    $.extend(settings, options);
+			$('form.tmp').sendRequestAjax({
+				 url: settings.url
+				,data: settings.data
+				,dataType: 'html'
 				,beforeSend: function(){
 					$(settings.content).html(settings.loading);
 				}
 				,success: function(response){
 					$(settings.content).html(response);
+
+					if(!settings.select) settings.select = $(settings.content).find('select');
+					
+					settings.required && $(settings.select).addClass('validate required');
 					$(settings.select).selectpicker();
 				}
 			});

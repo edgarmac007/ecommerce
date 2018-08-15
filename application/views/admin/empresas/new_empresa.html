@@ -1,0 +1,82 @@
+<div class="container-fluid">
+    <form class="form-validate" method="post" action="{BASE_URL}admin/empresas/process_save_empresa">
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <div class="card">
+                    <div class="card-content">
+                        <h4 class="card-title">{empresas_datos_empresa}</h4>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group label-floating has-success">
+                                    <label class="control-label">{general_municipio} *</label>
+                                    {select_municipios}
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group label-floating has-success">
+                                    <label class="control-label">{general_localidad} *</label>
+                                    <div class="load-localidades">
+                                        {select_localidades}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group label-floating has-success">
+                                    <label class="control-label" for="empresa">{empresas_empresa} *</label>
+                                    <input class="form-control validate required" name="empresa" id="empresa" type="text" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group label-floating has-success">
+                                    <label class="control-label" for="razon_social">{empresas_razon_social} *</label>
+                                    <input class="form-control validate required" name="razon_social" id="razon_social" type="text" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group label-floating has-success">
+                                    <label class="control-label" for="rfc">{empresas_rfc} </label>
+                                    <input class="form-control" name="rfc" id="rfc" type="text" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group label-floating has-success">
+                                    <label class="control-label" for="calle">{empresas_calle} *</label>
+                                    <input class="form-control validate required" name="calle" id="calle" type="text" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group label-floating has-success">
+                                    <label class="control-label" for="num_calle">{empresas_num_calle} *</label>
+                                    <input class="form-control validate required digits" name="num_calle" id="num_calle" type="text" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group label-floating has-success">
+                                    <label class="control-label" for="telefono">{empresas_telefono} *</label>
+                                    <input class="form-control validate required" name="telefono" id="telefono" type="text" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="category">
+                            <small>{general_required_fields}</small>
+                        </div>
+                        <div class="pull-right">
+                            <a href="{BASE_URL}admin/empresas" class="btn btn-link text-danger">
+                                {general_cancelar}
+                            </a>
+                            <button type="submit" class="btn btn-success btn-fill submit">{general_guardar}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

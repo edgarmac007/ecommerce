@@ -18,13 +18,7 @@ $lang['menu_usuarios'] 		= 'Usuarios';
 $lang['menu_perfiles'] 		= 'Perfiles';
 $lang['menu_personales']	= 'Personales';
 $lang['menu_admin'] 		= 'Administración';
-$lang['menu_secciones']		= 'Secciones';
-$lang['menu_metatags']		= 'Metatags';
-$lang['menu_noticias']		= 'Noticias';
-$lang['menu_proyectos']		= 'Proyectos';
-$lang['menu_servicios']		= 'Servicios';
-$lang['menu_solicitudes']	= 'Solicitudes';
-$lang['menu_clientes']		= 'Clientes';
+$lang['menu_empresas'] 		= 'Empresas';
 
 
 /* End of file Menu_lang.php */

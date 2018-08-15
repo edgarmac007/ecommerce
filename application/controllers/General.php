@@ -29,6 +29,14 @@ class General extends MY_Controller {
 
     	echo json_encode($response);
     }
+
+    public function load_localidades_ajax(){
+        $sql_data = array(
+            'id_municipio'  => $this->input->post('id_municipio')
+        );
+
+        echo $this->build_select_localidades($sql_data);
+    }
 }
 
 /* End of file General.php */

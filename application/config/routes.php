@@ -76,3 +76,6 @@ $route['admin/usuarios'] 			= 'admin/administracion/usuarios';
 $route['admin/perfiles'] 		    = 'admin/catalogos/perfiles';
 $route['admin/new-perfil'] 		    = 'admin/catalogos/perfiles/new_perfil_view';
 $route['admin/update-perfil'] 	    = 'admin/catalogos/perfiles/update_perfil_view';
+
+//ADMINISTRACION-EMPRESAS
+$route['admin/new-empresa'] 		= 'admin/empresas/new_empresas';

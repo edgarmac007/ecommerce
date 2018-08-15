@@ -12,18 +12,10 @@ class MY_Controller extends CI_Controller {
     var $vars;
 	function  __construct() {
         parent::__construct(); 
-
-        //LOAD HELPERS FOR ADMIN
-        $this->load->helper('system');
-        $this->load->helper('admin');
         
         //LOAD VARS APP
         $Load_vars = new Load_vars('application');
         $this->vars = $Load_vars->vars;
-        
-        //LOAD MODELS 
-        $this->load->model("menu/menu_model", "db_menu");
-        $this->load->model('Languages_model', 'db_lang');
     }
 
 	/**
@@ -259,31 +251,6 @@ class MY_Controller extends CI_Controller {
     }
 
     /**
-     * construcción del select metatag en HTML
-     * @return  String select HTML
-     **/
-    protected function build_select_meta($data=array()) {
-        $selected = isset($data['selected']) ? $data['selected'] : FALSE;
-        $required = isset($data['required']) ? 'required' : '';
-        $sql_data = [];
-        isset($data['id_lang']) ? $sql_data['id_lang'] = $data['id_lang'] : FALSE;
-        $rows = $this->db_meta->get_metatags($sql_data);
-
-        $params = array(
-            'option'        => $rows
-            ,'name'         => 'id_metatag'
-            ,'id'           => 'id_metatag'
-            ,'value'        => 'id_metatag'
-            ,'text'         => 'titulo'
-            ,'class'        => "validate $required"
-        );
-        $selected!==FALSE ? $params['selected'] = $selected : FALSE;
-        $dropdown = dropdown($params);
-
-        return  $dropdown;
-    }
-
-    /**
      * Proceso para guardar archivos en el sistema
      * @param Array $data datos para el guardado del archivo
      * @return Array $response Ruta donde se guardó el archivo 
@@ -314,6 +281,48 @@ class MY_Controller extends CI_Controller {
         }
 
         return $response;
+    }
+
+    /**
+     * Construcción del select municipios
+     */
+    protected function build_select_municipios($data=array()) {
+        $rows = $this->db_municipios->get_municipios($data);
+        
+        $params = array(
+            'option'        => $rows
+            ,'name'         => 'id_municipio'
+            ,'id'           => 'id_municipio'
+            ,'value'        => 'id_municipio'
+            ,'text'         => 'municipio'
+            ,'live_search'  => TRUE
+            ,'class'        => 'validate'
+        );
+        isset($data['selected']) AND $params['selected'] = $data['selected'];
+        isset($data['required']) AND $params['class'] .= ' required';
+
+        return  dropdown($params);
+    }
+
+    /**
+     * Construcción del select localidades
+     */
+    protected function build_select_localidades($data=array()) {
+        $rows = $this->db_localidades->get_localidades($data);
+        
+        $params = array(
+            'option'        => $rows
+            ,'name'         => 'id_localidad'
+            ,'id'           => 'id_localidad'
+            ,'value'        => 'id_localidad'
+            ,'text'         => 'custom_localidad'
+            ,'live_search'  => TRUE
+            ,'class'        => 'validate'
+        );
+        isset($data['selected']) AND $params['selected'] = $data['selected'];
+        isset($data['required']) AND $params['class'] .= ' required';
+
+        return  dropdown($params);
     }
 }
 

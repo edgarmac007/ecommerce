@@ -29,6 +29,7 @@ $config['lang_files'] = array(
     ,'Personales'
     ,'email'
     ,'Dashboard'
+    ,'empresas'
 );
 
 /* End of file config_lang.php */
