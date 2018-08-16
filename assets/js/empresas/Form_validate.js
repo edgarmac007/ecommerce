@@ -28,7 +28,7 @@ jQuery(function($) {
 			    		,text: response.msg
 			    		,type: response.type 
 			    		,onClose: function() {
-			    			redirect('admin/empresas');
+			    			response.success && redirect('admin/empresas');
 			    		}
 			    	});
 			    }

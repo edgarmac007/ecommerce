@@ -1,4 +1,4 @@
-$(document).ready(function() {
+jQuery(function() {
 	var link = '';
 
 	/**
@@ -9,11 +9,11 @@ $(document).ready(function() {
 	/**
 	 * Element: <a.edit>
 	 * Action: click
-	 * Description: Envía a un nuevo formmulario para editar los datos del personal
+	 * Description: Envía a un nuevo formmulario para editar los datos de la empresa
 	 */
 	.on('click', 'a.edit', function(e){
 		var data = $(this).closest('tr').data(),
-			url  = base_url("admin/update-personal");
+			url  = base_url("admin/update-empresa");
 		form_send(data, url);
 		e.preventDefault();
 	})

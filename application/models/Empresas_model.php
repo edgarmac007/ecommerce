@@ -6,6 +6,7 @@ class Empresas_model extends MY_Model {
 	public function get_empresas($data=array()) {
 		$tbl = $this->tbl;
 
+		isset($data['update']) 			AND $this->db->where('id_empresa !=', $data['update']);
 		isset($data['id_empresa']) 		AND $this->db->where('id_empresa', $data['id_empresa']);
 		isset($data['empresa']) 		AND $this->db->where('empresa', $data['empresa']);
 		isset($data['razon_social']) 	AND $this->db->where('razon_social', $data['razon_social']);

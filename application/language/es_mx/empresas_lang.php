@@ -18,6 +18,7 @@ $lang['empresas_datos_empresa'] 	= 'Datos de la empresa';
 $lang['empresas_duplicate'] 		= 'La empresa que está intentando registrar, ya existe en el sistema';
 $lang['empresas_save_success'] 		= '¡La empresa se ha registrado con éxito!';
 $lang['empresas_delete_success'] 	= '¡La empresa se ha borrado con éxito!';
+$lang['empresas_edit_success'] 		= '¡Se ha guardado los cambios con éxito!';
 
 /* End of file empresas_lang.php */
 /* Location: ./application/language/es_mx/empresas_lang.php */

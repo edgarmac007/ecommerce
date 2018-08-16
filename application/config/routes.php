@@ -79,3 +79,4 @@ $route['admin/update-perfil'] 	    = 'admin/catalogos/perfiles/update_perfil_vie
 
 //ADMINISTRACION-EMPRESAS
 $route['admin/new-empresa'] 		= 'admin/empresas/new_empresas';
+$route['admin/update-empresa'] 		= 'admin/empresas/edit_empresas';
