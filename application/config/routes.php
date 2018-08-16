@@ -78,5 +78,8 @@ $route['admin/new-perfil'] 		    = 'admin/catalogos/perfiles/new_perfil_view';
 $route['admin/update-perfil'] 	    = 'admin/catalogos/perfiles/update_perfil_view';
 
 //ADMINISTRACION-EMPRESAS
-$route['admin/new-empresa'] 		= 'admin/empresas/new_empresas';
-$route['admin/update-empresa'] 		= 'admin/empresas/edit_empresas';
+$route['admin/new-empresa'] 				= 'admin/empresas/new_empresas';
+$route['admin/update-empresa'] 				= 'admin/empresas/edit_empresas';
+$route['admin/empresa-sucursales'] 			= 'admin/empresas/list_sucursales';
+$route['admin/empresa-sucursales/(:num)'] 	= 'admin/empresas/list_sucursales/$1';
+$route['admin/new-sucursal/(:num)'] 		= 'admin/empresas/new_sucursal/$1';

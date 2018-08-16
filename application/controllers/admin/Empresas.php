@@ -9,6 +9,7 @@ class Empresas extends MY_Controller {
 
 		//Load models
 		$this->load->model('empresas_model', 'db_empresas');
+		$this->load->model('sucursales_model', 'db_sucursales');
 	}
 
 	public function index() {
@@ -60,6 +61,12 @@ class Empresas extends MY_Controller {
 
 	private function build_icon_empresas(array $data) {
 		$buttons = array(
+			array(
+				'tooltip' 	=> lang('empresas_sucursales')
+				,'class'	=> 'btn-info list-sucursales'
+				,'icon'		=> '<i class="material-icons">business</i>'
+			)
+			,
 			array(
 				'tooltip' 	=> lang('general_editar')
 				,'class'	=> 'btn-warning edit'
@@ -244,6 +251,142 @@ class Empresas extends MY_Controller {
 				 'success' 	=> TRUE
 				,'title' 	=> lang('general_exito')
 				,'msg' 		=> lang('empresas_edit_success')
+				,'type' 	=> 'success'
+			);
+		} catch (Exception $e) {
+			$response = array(
+				'success' 	=> FALSE
+				,'title' 	=> lang('general_error')
+				,'msg' 		=> $e->getMessage()
+				,'type' 	=> 'error'
+			);
+		}
+    	
+    	echo json_encode($response);
+	}
+
+	/**
+	 * Cargamos la lista de las sucursales registrados en la empresa
+	 **/
+	public function list_sucursales($id_empresa=FALSE) {
+		$_POST OR $id_empresa OR redirect(base_url('admin/empresas'), 'refresh');
+		$id_empresa AND $_POST['id_empresa'] = $id_empresa;
+
+		//LABELS
+		$data_view['title'] 					= lang('menu_admin');
+		$data_view['subtitle'] 					= lang('empresas_sucursales');
+		
+		//DATA
+		$data_view['data_table'] = self::build_table_sucursale();
+		$data_view['id_empresa'] = $this->input->post('id_empresa');
+
+		//load view
+		$includes['footer']['js'][] = array( 'url' => 'js/sucursales', 'name' => 'Table_events');
+		$this->load_view($this->path."/list-sucursales", $data_view, $includes);
+	}
+
+	/**
+	 * Generamos la lista de las sucursale de la empresa
+	 **/
+	private function build_table_sucursale() {
+		$sql_data 	= $this->input->post();
+		$rows 		= $this->db_sucursales->get_sucursales($sql_data);
+		$title 		= array(
+			 lang('general_id')
+			,lang('general_municipio')
+			,lang('general_localidad')
+			,lang('empresas_sucursal')
+			,lang('empresas_calle')
+			,lang('empresas_num_calle')
+			,lang('empresas_telefono')
+			,lang('general_actions')
+		);
+
+		$data = array();
+		foreach ($rows as $row) {
+			$data[] = array(
+				 'id_sucursal' 	=> $row['id_sucursal']
+				,'municipio' 	=> $row['municipio']
+				,'localidad' 	=> $row['localidad']
+				,'sucursal' 	=> $row['sucursal']
+				,'calle' 		=> $row['calle']
+				,'num_calle' 	=> $row['num_calle']
+				,'telefono' 	=> $row['telefono']
+				,'action' 		=> '' //self::build_icon_sucursales($row)
+			);
+		}
+
+		$data_table = array(
+			 'head' 		=> $title
+			,'rows' 		=> $data
+			,'id' 			=> 'table-main'
+			,'attr_data' 	=> array('id_id_sucursal', 'sucursal')
+		);
+		
+		return Datatable($data_table);
+	}
+
+	/**
+	 * Cargamos la vista para registrar nuevas sucursales de la empresa
+	 **/
+	public function new_sucursal($id_empresa=FALSE) {
+		$id_empresa OR redirect(base_url('admin/empresas'), 'refresh');
+		$sql_data['id_empresa'] = $id_empresa;
+		$data = $this->db_empresas->get_empresas($sql_data);
+		count($data) OR redirect(base_url('admin/empresa'), 'refresh');
+
+		//labels
+		$data_view['title'] 					= lang('menu_empresas');
+		$data_view['general_required_fields'] 	= lang('general_required_fields');
+		$data_view['empresas_datos_sucursal'] 	= lang('empresas_datos_sucursal');
+		$data_view['general_municipio'] 		= lang('general_municipio');
+		$data_view['general_localidad'] 		= lang('general_localidad');
+		$data_view['general_guardar'] 			= lang('general_guardar');
+		$data_view['empresas_empresa'] 			= lang('empresas_empresa');
+		$data_view['empresas_razon_social']		= lang('empresas_razon_social');
+		$data_view['empresas_sucursal'] 		= lang('empresas_sucursal');
+		$data_view['empresas_calle'] 			= lang('empresas_calle');
+		$data_view['general_cancelar'] 			= lang('general_cancelar');
+		$data_view['empresas_num_calle'] 		= lang('empresas_num_calle');
+		$data_view['empresas_telefono'] 		= lang('empresas_telefono');
+
+		//DATA
+		$data_view = array_merge($data_view, $data[0]);
+		$params = array('required'=>TRUE);
+		$data_view['select_municipios'] 		= $this->build_select_municipios($params);
+		$params['id_municipio'] = 0;
+		$data_view['select_localidades'] 		= $this->build_select_localidades($params);
+
+		$includes['footer']['js'][] = array( 'url' => 'js/sucursales', 'name' => 'Form_validate');
+		$this->load_view($this->path."/new_sucursal", $data_view, $includes);
+	}
+
+	/**
+	 * Proceso para guardar la nueva sucursal
+	 **/
+	public function process_save_sucursal() {
+		try {
+			$sql_data = array(
+			     'id_empresa' 		=> $this->input->post('id_empresa')
+				,'id_municipio' 	=> $this->input->post('id_municipio')
+			    ,'id_localidad' 	=> $this->input->post('id_localidad')
+			    ,'sucursal' 		=> $this->input->post('sucursal')
+			    ,'calle' 			=> $this->input->post('calle')
+			    ,'num_calle' 		=> $this->input->post('num_calle')
+			    ,'telefono' 		=> $this->input->post('telefono')
+			    ,'id_usuario' 		=> $this->session->userdata('id_usuario')
+			);
+
+			$exist 	= $this->db_sucursales->get_sucursales($sql_data);
+			$exist AND set_exception(lang('empresas_duplicate'));
+
+			$insert = $this->db_sucursales->insert_sucursal($sql_data);
+			$insert OR set_exception();
+
+			$response = array(
+				 'success' 	=> TRUE
+				,'title' 	=> lang('general_exito')
+				,'msg' 		=> lang('empresas_sucursal_save_success')
 				,'type' 	=> 'success'
 			);
 		} catch (Exception $e) {

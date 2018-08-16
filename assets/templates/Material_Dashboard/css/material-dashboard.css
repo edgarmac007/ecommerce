@@ -10017,8 +10017,8 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 }
 
 .tooltip-inner {
-  padding: 10px 15px;
-  min-width: 130px;
+  padding: 7px 10px;
+  min-width: 50px;
 }
 
 footer {
