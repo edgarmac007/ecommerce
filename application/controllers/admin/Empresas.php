@@ -312,7 +312,7 @@ class Empresas extends MY_Controller {
 				,'calle' 		=> $row['calle']
 				,'num_calle' 	=> $row['num_calle']
 				,'telefono' 	=> $row['telefono']
-				,'action' 		=> '' //self::build_icon_sucursales($row)
+				,'action' 		=> self::build_icon_sucursales($row)
 			);
 		}
 
@@ -320,10 +320,30 @@ class Empresas extends MY_Controller {
 			 'head' 		=> $title
 			,'rows' 		=> $data
 			,'id' 			=> 'table-main'
-			,'attr_data' 	=> array('id_id_sucursal', 'sucursal')
+			,'attr_data' 	=> array('id_sucursal', 'sucursal')
 		);
 		
 		return Datatable($data_table);
+	}
+
+	/**
+	 * Generamos los botones para las acciones de las sucursales de las empresas
+	 **/
+	protected function  build_icon_sucursales(array $data) {
+		$buttons = array(
+			array(
+				'tooltip' 	=> lang('general_editar')
+				,'class'	=> 'btn-warning edit'
+				,'icon'		=> '<i class="material-icons">mode_edit</i>'
+			)
+			,array(
+				'tooltip' 	=> lang('general_borrar')
+				,'class'	=> 'btn-danger drop'
+				,'icon'		=> '<i class="material-icons">delete</i>'
+			)
+		);
+
+		return build_actions($buttons);
 	}
 
 	/**
@@ -333,7 +353,7 @@ class Empresas extends MY_Controller {
 		$id_empresa OR redirect(base_url('admin/empresas'), 'refresh');
 		$sql_data['id_empresa'] = $id_empresa;
 		$data = $this->db_empresas->get_empresas($sql_data);
-		count($data) OR redirect(base_url('admin/empresa'), 'refresh');
+		count($data) OR redirect(base_url('admin/empresas'), 'refresh');
 
 		//labels
 		$data_view['title'] 					= lang('menu_empresas');
@@ -387,6 +407,37 @@ class Empresas extends MY_Controller {
 				 'success' 	=> TRUE
 				,'title' 	=> lang('general_exito')
 				,'msg' 		=> lang('empresas_sucursal_save_success')
+				,'type' 	=> 'success'
+			);
+		} catch (Exception $e) {
+			$response = array(
+				'success' 	=> FALSE
+				,'title' 	=> lang('general_error')
+				,'msg' 		=> $e->getMessage()
+				,'type' 	=> 'error'
+			);
+		}
+    	
+    	echo json_encode($response);
+	}
+
+	/**
+	 * Generamos el proceso de la eliminación de la sucursal
+	 **/
+	public function process_drop_sucursal() {
+		try {
+			$sql_data = array(
+				 'id_sucursal' 		=> $this->input->post('id_sucursal')
+			    ,'id_usuario_edit' 	=> $this->session->userdata('id_usuario')
+				,'activo' 			=> 0
+			);
+			$update = $this->db_sucursales->update_sucursal($sql_data);
+			$update OR set_exception();
+
+			$response = array(
+				 'success' 	=> TRUE
+				,'title' 	=> lang('general_exito')
+				,'msg' 		=> lang('empresas_sucursal_drop_success')
 				,'type' 	=> 'success'
 			);
 		} catch (Exception $e) {

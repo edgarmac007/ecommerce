@@ -33,7 +33,7 @@ jQuery(function() {
 	/**
 	 * Element: <a.drop>
 	 * Action: click
-	 * Description: desactiva la empresa seleccionada
+	 * Description: desactiva la sucursal seleccionada
 	 */
 	.on('click', 'a.drop', function(e){
 		var tr 	= $(this).closest('tr');
@@ -46,7 +46,7 @@ jQuery(function() {
 			confirmButtonText: general_lang.si_borralo,
 		}).then(function () {
 			$('form.tmp').sendRequestAjax({
-				 url: base_url('admin/empresas/process_drop_empresa')
+				 url: base_url('admin/empresas/process_drop_sucursal')
 				,data: data
 				,success: function(response){
 					swal( response.title, response.msg, response.type);
