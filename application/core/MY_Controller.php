@@ -145,6 +145,7 @@ class MY_Controller extends CI_Controller {
         $data_view['USER_NAME'] = $this->session->userdata('username');
         $data_view['mi_perfil'] = lang('cuenta_mi_perfil');
         $data_view['salir'] = lang('menu_loguot');
+        $data_view = array_merge($data_view, $this->session->userdata());
 
         if ($id_usuario) {
             $data_menu = $this->db_menu->get_menu($position, $id_usuario);

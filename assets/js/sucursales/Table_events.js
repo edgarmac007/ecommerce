@@ -9,23 +9,23 @@ jQuery(function() {
 	/**
 	 * Element: <a.edit>
 	 * Action: click
-	 * Description: Envía a un nuevo formmulario para editar los datos de la empresa
+	 * Description: Envía a un nuevo formmulario para editar los datos de la sucursal
 	 */
 	.on('click', 'a.edit', function(e){
 		var data = $(this).closest('tr').data(),
-			url  = base_url("admin/update-empresa");
+			url  = base_url("admin/update-sucursal");
 		form_send(data, url);
 		e.preventDefault();
 	})
 
 	/**
-	 * Element: <a.list-sucursales>
+	 * Element: <a.empleados>
 	 * Action: click
-	 * Description: Envía a un nuevo formulario para ver las sucursales que tiene la empresa
+	 * Description: Enviamos a la lista de los empleados de la sucursal seleccionado
 	 */
-	.on('click', 'a.list-sucursales', function(e){
+	.on('click', 'a.empleados', function(e){
 		var data = $(this).closest('tr').data(),
-			url  = base_url("admin/empresa-sucursales");
+			url  = base_url("admin/empleados-sucursal");
 		form_send(data, url);
 		e.preventDefault();
 	})

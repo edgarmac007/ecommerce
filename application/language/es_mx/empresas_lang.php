@@ -24,6 +24,7 @@ $lang['empresas_sucursal'] 				= 'Sucursal';
 $lang['empresas_datos_sucursal'] 		= 'Datos de la sucursal';
 $lang['empresas_sucursal_save_success'] = '¡La sucursal se ha registrado con éxito!';
 $lang['empresas_sucursal_drop_success'] = '¡La sucursal se ha borrado con éxito!';
+$lang['empresas_sucursal_duplicate'] 	= 'La sucursal que está intentando registrar, ya existe en el sistema';
 
 /* End of file empresas_lang.php */
 /* Location: ./application/language/es_mx/empresas_lang.php */

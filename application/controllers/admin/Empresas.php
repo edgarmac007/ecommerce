@@ -275,6 +275,7 @@ class Empresas extends MY_Controller {
 		//LABELS
 		$data_view['title'] 					= lang('menu_admin');
 		$data_view['subtitle'] 					= lang('empresas_sucursales');
+		$data_view['general_regresar'] 			= lang('general_regresar');
 		
 		//DATA
 		$data_view['data_table'] = self::build_table_sucursale();
@@ -331,6 +332,12 @@ class Empresas extends MY_Controller {
 	 **/
 	protected function  build_icon_sucursales(array $data) {
 		$buttons = array(
+			array(
+				'tooltip' 	=> lang('general_empleados')
+				,'class'	=> 'btn-info empleados'
+				,'icon'		=> '<i class="material-icons">assignment_ind</i>'
+			)
+			,
 			array(
 				'tooltip' 	=> lang('general_editar')
 				,'class'	=> 'btn-warning edit'
@@ -438,6 +445,91 @@ class Empresas extends MY_Controller {
 				 'success' 	=> TRUE
 				,'title' 	=> lang('general_exito')
 				,'msg' 		=> lang('empresas_sucursal_drop_success')
+				,'type' 	=> 'success'
+			);
+		} catch (Exception $e) {
+			$response = array(
+				'success' 	=> FALSE
+				,'title' 	=> lang('general_error')
+				,'msg' 		=> $e->getMessage()
+				,'type' 	=> 'error'
+			);
+		}
+    	
+    	echo json_encode($response);
+	}
+
+	/**
+	 * Carga del formulario para la edición de la sucursal
+	 **/
+	public function edit_sucursal() {
+		$_POST OR redirect(base_url('admin/empresas'), 'refresh');
+		$sql_data['id_sucursal'] = $this->input->post('id_sucursal');
+		$data_sucursal = $this->db_sucursales->get_sucursales($sql_data);
+		$sql_data['id_empresa'] = $data_sucursal[0]['id_empresa'];
+		$data_empresa = $this->db_empresas->get_empresas($sql_data);
+
+		//labels
+		$data_view['title'] 					= lang('menu_empresas');
+		$data_view['general_required_fields'] 	= lang('general_required_fields');
+		$data_view['empresas_datos_sucursal'] 	= lang('empresas_datos_sucursal');
+		$data_view['general_municipio'] 		= lang('general_municipio');
+		$data_view['general_localidad'] 		= lang('general_localidad');
+		$data_view['general_guardar'] 			= lang('general_guardar');
+		$data_view['empresas_empresa'] 			= lang('empresas_empresa');
+		$data_view['empresas_razon_social']		= lang('empresas_razon_social');
+		$data_view['empresas_sucursal'] 		= lang('empresas_sucursal');
+		$data_view['empresas_calle'] 			= lang('empresas_calle');
+		$data_view['general_cancelar'] 			= lang('general_cancelar');
+		$data_view['empresas_num_calle'] 		= lang('empresas_num_calle');
+		$data_view['empresas_telefono'] 		= lang('empresas_telefono');
+
+		//DATA
+		$data_view = array_merge($data_view, $data_empresa[0], $data_sucursal[0]);
+		$params = array(
+			 'required' => TRUE
+			,'selected' => $data_sucursal[0]['id_municipio']
+		);
+		$data_view['select_municipios'] 		= $this->build_select_municipios($params);
+		$params = array(
+			 'required' 	=> TRUE
+			,'id_municipio' => $data_sucursal[0]['id_municipio']
+			,'selected' 	=> $data_sucursal[0]['id_localidad']
+		);
+		$data_view['select_localidades'] 		= $this->build_select_localidades($params);
+
+		$includes['footer']['js'][] = array( 'url' => 'js/sucursales', 'name' => 'Form_validate');
+		$this->load_view($this->path."/edit_sucursal", $data_view, $includes);
+	}
+
+	/**
+	 * Proceso para la edición de los datos de la sucursal
+	 **/
+	public function process_edit_sucursal() {
+		try {
+			$sql_data = array(
+				 'update' 			=> $this->input->post('id_sucursal')
+				,'id_municipio' 	=> $this->input->post('id_municipio')
+			    ,'id_localidad' 	=> $this->input->post('id_localidad')
+			    ,'sucursal' 		=> $this->input->post('sucursal')
+			    ,'calle' 			=> $this->input->post('calle')
+			    ,'num_calle' 		=> $this->input->post('num_calle')
+			    ,'telefono' 		=> $this->input->post('telefono')
+			    ,'id_usuario_edit' 	=> $this->session->userdata('id_usuario')
+			);
+
+			$exist 	= $this->db_sucursales->get_sucursales($sql_data);
+			$exist AND set_exception(lang('empresas_sucursal_duplicate'));
+			unset($sql_data['update']);
+
+			$sql_data['id_sucursal'] = $this->input->post('id_sucursal');
+			$update = $this->db_sucursales->update_sucursal($sql_data);
+			$update OR set_exception();
+
+			$response = array(
+				 'success' 	=> TRUE
+				,'title' 	=> lang('general_exito')
+				,'msg' 		=> lang('empresas_edit_success')
 				,'type' 	=> 'success'
 			);
 		} catch (Exception $e) {
