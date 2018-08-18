@@ -63,16 +63,18 @@ if (!function_exists('Datatable')) {
 	 * @return $dataTable HTML
 	 */
 	function Datatable($data = array()) {
+		$caption 	= isset($data['caption']) 	? $data['caption'] 		: '';
 		$head 		= isset($data['head']) 		? $data['head'] 		: array('');
-		$foot 		= isset($data['foot']) 		? $data['foot'] 		: array('');
+		$foot 		= isset($data['foot']) 		? $data['foot'] 		: array();
 		$rows 		= isset($data['rows']) 		? $data['rows'] 		: array(array(lang('general_emptyTable')));
 		$id 		= isset($data['id']) 		? $data['id'] 			: '';
 		$class 		= isset($data['class']) 	? $data['class'] 		: '';
 		$attr_data 	= isset($data['attr_data']) ? $data['attr_data'] 	: array();
-
+		$attr_data 	= isset($data['attr_data']) ? $data['attr_data'] 	: array();
+		
 		//BUILD THEAD
 		$thead = "<thead><tr><th>".implode('</th><th>', $head)."</th></tr></thead>";
-		$tfoot = "<thead><tr><th>".implode('</th><th>', $foot)."</th></tr></thead>";
+		$tfoot = count($foot) ? "<tfoot><tr><th>".implode('</th><th>', $foot)."</th></tr></tfoot>" : '';
 		$tbody = "<tbody>";
 		foreach ($rows as $row) {
 			$str_data = '';
@@ -89,6 +91,7 @@ if (!function_exists('Datatable')) {
 
 		$dataTable 	= '<div class="table-responsive material-datatables">';
         $dataTable .= '<table id='.$id.' class="datatables table table-striped table-no-bordered table-hover '.$class.'">';
+        $dataTable .= "<caption>$caption</caption>";
         $dataTable .= $thead.$tbody.$tfoot;
         $dataTable .= '</table>';
         $dataTable .= '</div>';

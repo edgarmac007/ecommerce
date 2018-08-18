@@ -1,5 +1,4 @@
 jQuery(function() {
-	var link = '';
 
 	/**
 	 * Tabla principal para los eventos jQuery
@@ -26,6 +25,18 @@ jQuery(function() {
 	.on('click', 'a.list-sucursales', function(e){
 		var data = $(this).closest('tr').data(),
 			url  = base_url("admin/empresa-sucursales");
+		form_send(data, url);
+		e.preventDefault();
+	})
+
+	/**
+	 * Element: <a.empleados>
+	 * Action: click
+	 * Description: Enviamos a la lista de los empleados de la empresa seleccionada
+	 */
+	.on('click', 'a.empleados', function(e){
+		var data = $(this).closest('tr').data(),
+			url  = base_url("admin/empresas/empleados");
 		form_send(data, url);
 		e.preventDefault();
 	})

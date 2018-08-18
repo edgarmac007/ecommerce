@@ -53,49 +53,49 @@
         }
 
         /** inicializamos el froalaEditor */
-        $(".editor-html").froalaEditor({
-            heightMin: 150
-            ,heightMax: 400
-            ,toolbarBottom: true
-            ,toolbarButtons: [
-                 'fullscreen'
-                ,'bold'
-                ,'italic'
-                ,'underline'
-                ,'strikeThrough'
-                ,'subscript'
-                ,'superscript'
-                ,'fontFamily'
-                ,'fontSize'
-                ,'|'
-                ,'color'
-                ,'emoticons'
-                ,'inlineStyle'
-                ,'paragraphStyle'
-                ,'|'
-                ,'paragraphFormat'
-                ,'align'
-                ,'formatOL'
-                ,'formatUL'
-                ,'outdent'
-                ,'indent'
-                ,'-'
-                ,'insertLink'
-                ,'insertImage'
-                ,'insertTable'
-                ,'|'
-                ,'quote'
-                ,'insertHR'
-                ,'undo'
-                ,'redo'
-                ,'clearFormatting'
-                ,'selectAll'
-                ,'html'
-            ]
-            ,imageAllowedTypes : [ 'jpeg' , 'jpg' , 'png' ]
-            ,imageUploadURL: base_url('general/upload_img')
-            ,imageUploadMethod: 'POST'
-        });
+        // $(".editor-html").froalaEditor({
+        //     heightMin: 150
+        //     ,heightMax: 400
+        //     ,toolbarBottom: true
+        //     ,toolbarButtons: [
+        //          'fullscreen'
+        //         ,'bold'
+        //         ,'italic'
+        //         ,'underline'
+        //         ,'strikeThrough'
+        //         ,'subscript'
+        //         ,'superscript'
+        //         ,'fontFamily'
+        //         ,'fontSize'
+        //         ,'|'
+        //         ,'color'
+        //         ,'emoticons'
+        //         ,'inlineStyle'
+        //         ,'paragraphStyle'
+        //         ,'|'
+        //         ,'paragraphFormat'
+        //         ,'align'
+        //         ,'formatOL'
+        //         ,'formatUL'
+        //         ,'outdent'
+        //         ,'indent'
+        //         ,'-'
+        //         ,'insertLink'
+        //         ,'insertImage'
+        //         ,'insertTable'
+        //         ,'|'
+        //         ,'quote'
+        //         ,'insertHR'
+        //         ,'undo'
+        //         ,'redo'
+        //         ,'clearFormatting'
+        //         ,'selectAll'
+        //         ,'html'
+        //     ]
+        //     ,imageAllowedTypes : [ 'jpeg' , 'jpg' , 'png' ]
+        //     ,imageUploadURL: base_url('general/upload_img')
+        //     ,imageUploadMethod: 'POST'
+        // });
 
         /** inicializamos el fileinput */
         $(".fileinput").fileinput({name:'file'});

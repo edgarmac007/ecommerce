@@ -19,18 +19,6 @@ jQuery(function() {
 	})
 
 	/**
-	 * Element: <a.empleados>
-	 * Action: click
-	 * Description: Enviamos a la lista de los empleados de la sucursal seleccionado
-	 */
-	.on('click', 'a.empleados', function(e){
-		var data = $(this).closest('tr').data(),
-			url  = base_url("admin/empleados-sucursal");
-		form_send(data, url);
-		e.preventDefault();
-	})
-
-	/**
 	 * Element: <a.drop>
 	 * Action: click
 	 * Description: desactiva la sucursal seleccionada

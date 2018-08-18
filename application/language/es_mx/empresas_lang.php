@@ -25,6 +25,12 @@ $lang['empresas_datos_sucursal'] 		= 'Datos de la sucursal';
 $lang['empresas_sucursal_save_success'] = '¡La sucursal se ha registrado con éxito!';
 $lang['empresas_sucursal_drop_success'] = '¡La sucursal se ha borrado con éxito!';
 $lang['empresas_sucursal_duplicate'] 	= 'La sucursal que está intentando registrar, ya existe en el sistema';
+$lang['empresas_empleados'] 			= 'Empleados';
+$lang['empresas_empleado'] 				= 'Empleado';
+$lang['empresas_asignacion_empleado'] 	= 'Asignación de empleado';
+$lang['empresas_asignacion_save_success'] 	= 'La asignación de los empleados se realizó con éxito';
+$lang['empresas_message1'] 					= 'seleccione la sucursal y los empreados a asignar';
+$lang['empresas_delete_empleado_success'] 	= '¡El empleado se ha borrado con éxito!';
 
 /* End of file empresas_lang.php */
 /* Location: ./application/language/es_mx/empresas_lang.php */

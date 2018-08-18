@@ -97,6 +97,7 @@ class MY_Controller extends CI_Controller {
         $extencion  = pathinfo($view, PATHINFO_EXTENSION);
         $view      .= (!$extencion?'.html': '');
         $view_path  = VIEWPATH.$view;
+        $data['BASE_URL']  = base_url();
         if (__exist_file($view_path)) { 
             if ($return) {
                 return $this->parser->parse($view, $data, TRUE);
@@ -317,6 +318,27 @@ class MY_Controller extends CI_Controller {
             ,'id'           => 'id_localidad'
             ,'value'        => 'id_localidad'
             ,'text'         => 'custom_localidad'
+            ,'live_search'  => TRUE
+            ,'class'        => 'validate'
+        );
+        isset($data['selected']) AND $params['selected'] = $data['selected'];
+        isset($data['required']) AND $params['class'] .= ' required';
+
+        return  dropdown($params);
+    }
+
+    /**
+     * Construcción del select sucursales
+     */
+    protected function build_select_sucursales($data=array()) {
+        $rows = $this->db_sucursales->get_sucursales($data);
+        
+        $params = array(
+            'option'        => $rows
+            ,'name'         => 'id_sucursal'
+            ,'id'           => 'id_sucursal'
+            ,'value'        => 'id_sucursal'
+            ,'text'         => 'sucursal'
             ,'live_search'  => TRUE
             ,'class'        => 'validate'
         );
