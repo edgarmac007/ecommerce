@@ -46,6 +46,7 @@ $lang['general_quitar'] 		= 'Quitar';
 $lang['general_bienvenido'] 	= 'Bienvenido a la administración de ';
 $lang['general_empleados'] 		= 'Empleados';
 $lang['general_regresar'] 		= 'Regresar';
+$lang['general_cerrar'] 		= 'Cerrar';
 
 /* End of file General_lang.php */
 /* Location: ./application/languaje/es_mx/General_lang.php */

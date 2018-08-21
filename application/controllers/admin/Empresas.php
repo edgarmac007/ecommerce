@@ -550,8 +550,9 @@ class Empresas extends MY_Controller {
 		$_POST OR redirect(base_url('empresas'), 'refresh');
 
 		//LABELS
-		$data_view['title'] 	= lang('menu_empresas');
-		$data_view['subtitle'] 	= lang('empresas_empleados');
+		$data_view['title'] 			= lang('menu_empresas');
+		$data_view['subtitle'] 			= lang('empresas_empleados');
+		$data_view['general_regresar'] 	= lang('general_regresar');
 		
 		//DATA
 		$data_view['data_table'] = self::build_table_empleados();
@@ -613,7 +614,7 @@ class Empresas extends MY_Controller {
 	public function get_modal_asignacion_empleados() {
 		//LABELS
 		$data_view['general_guardar'] 				= lang('general_guardar');
-		$data_view['general_cancelar'] 				= lang('general_cancelar');
+		$data_view['general_cerrar'] 				= lang('general_cerrar');
 		$data_view['empresas_asignacion_empleado'] 	= lang('empresas_asignacion_empleado');
 		$data_view['empresas_message1'] 			= lang('empresas_message1');
 		$data_view['empresas_sucursal'] 			= lang('empresas_sucursal');

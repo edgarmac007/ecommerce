@@ -94,6 +94,9 @@ jQuery(function($) {
 				    		,text: response.msg
 				    		,type: response.type 
 				    		,onClose: function() {
+				    			if (response.success) {
+				    				$(form).find('input:checked').closest('tr').remove();
+				    			}
 				    		}
 				    	});
 				    }
