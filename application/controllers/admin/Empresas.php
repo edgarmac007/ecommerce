@@ -580,6 +580,11 @@ class Empresas extends MY_Controller {
 		foreach ($rows as $row) {
 			$buttons = array(
 				array(
+					'tooltip' 	=> lang('empresas_transferir')
+					,'class'	=> 'btn-warning transferir'
+					,'icon'		=> '<i class="material-icons">transfer_within_a_station</i>'
+				)
+				,array(
 					'tooltip' 	=> lang('general_borrar')
 					,'class'	=> 'btn-danger drop'
 					,'icon'		=> '<i class="material-icons">delete</i>'
