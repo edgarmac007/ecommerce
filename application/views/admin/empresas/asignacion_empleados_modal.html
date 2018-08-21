@@ -12,6 +12,12 @@
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="form-group label-floating has-success">
+                                <label class="control-label" for="empresa">{empresas_empresa} </label>
+                                <input type="text" id="empresa" class="form-control ignore disabled" name="empresa" value="{empresa}" disabled autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group label-floating has-success">
                                 <input type="hidden" name="id_empresa" id="id_empresa" value="{id_empresa}">
                                 <label class="control-label" for="id_sucursal">{empresas_sucursal} </label>
                                 {select_sucursales}

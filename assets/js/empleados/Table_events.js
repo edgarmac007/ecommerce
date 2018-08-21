@@ -8,7 +8,8 @@ jQuery(function($) {
 	.on('click', 'a.open-modal', function(e){
 		var url 	= base_url('admin/empresas/get_modal_asignacion_empleados')
 			data 	= {
-				id_empresa: $('#id_empresa').val()
+				 id_empresa: $('#id_empresa').val()
+				,empresa: $('#empresa').val()
 			};
 
 		$('form.tmp').sendRequestAjax({

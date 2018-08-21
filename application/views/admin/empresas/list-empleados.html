@@ -6,6 +6,7 @@
                     <i class="material-icons">add_circle</i>
                 </a>
                 <div class="card-content">
+                    <input type="hidden" name="empresa" id="empresa" value="{empresa}">
                     <input type="hidden" name="id_empresa" id="id_empresa" value="{id_empresa}">
                     <h4 class="card-title">{subtitle}</h4>
                     <div class="toolbar">
@@ -14,7 +15,7 @@
                     <div class="content-list-empleados">
                         {data_table}
                     </div>
-                    
+
                     <a href="{BASE_URL}admin/empresas" class="btn btn-link text-danger pull-right">
                         <i class="material-icons">reply</i>
                         {general_regresar}

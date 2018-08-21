@@ -617,6 +617,7 @@ class Empresas extends MY_Controller {
 		$data_view['general_cerrar'] 				= lang('general_cerrar');
 		$data_view['empresas_asignacion_empleado'] 	= lang('empresas_asignacion_empleado');
 		$data_view['empresas_message1'] 			= lang('empresas_message1');
+		$data_view['empresas_empresa'] 				= lang('empresas_empresa');
 		$data_view['empresas_sucursal'] 			= lang('empresas_sucursal');
 
 		//DATA
@@ -624,7 +625,7 @@ class Empresas extends MY_Controller {
 		$sql_data['required'] 			= TRUE;
 		$data_view['select_sucursales'] = $this->build_select_sucursales($sql_data);
 		$data_view['dataTable'] 		= $this->build_empleados_disponibles();
-		$data_view['id_empresa'] 		= $this->input->post('id_empresa');
+		$data_view 						= array_merge($data_view, $this->input->post());
 
 		echo $this->view_unique($this->path."/asignacion_empleados_modal", $data_view);
 	}
