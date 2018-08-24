@@ -85,3 +85,6 @@ $route['admin/empresa-sucursales/(:num)'] 	= 'admin/empresas/list_sucursales/$1'
 $route['admin/new-sucursal/(:num)'] 		= 'admin/empresas/new_sucursal/$1';
 $route['admin/update-sucursal'] 			= 'admin/empresas/edit_sucursal';
 $route['admin/empresas/empleados'] 			= 'admin/empresas/empleados';
+
+//ADMINISTRACION-PRODUCTOS
+$route['admin/add_productos'] 				= 'admin/productos/add';

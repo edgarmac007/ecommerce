@@ -8,18 +8,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * 
  */
 
-$lang['menu_dashboard'] 	= 'Dashboard';
-$lang['menu_home'] 			= 'Inicio';
-$lang['menu_user'] 			= 'Usuario';
-$lang['menu_cuenta'] 		= 'Cuenta';
-$lang['menu_loguot'] 		= 'Salir';
-$lang['menu_catalogos'] 	= 'Catálogos';
-$lang['menu_usuarios'] 		= 'Usuarios';
-$lang['menu_perfiles'] 		= 'Perfiles';
-$lang['menu_personales']	= 'Personales';
-$lang['menu_admin'] 		= 'Administración';
-$lang['menu_empresas'] 		= 'Empresas';
-
+$lang['menu_dashboard'] 		= 'Dashboard';
+$lang['menu_home'] 				= 'Inicio';
+$lang['menu_user'] 				= 'Usuario';
+$lang['menu_cuenta'] 			= 'Cuenta';
+$lang['menu_loguot'] 			= 'Salir';
+$lang['menu_catalogos'] 		= 'Catálogos';
+$lang['menu_usuarios'] 			= 'Usuarios';
+$lang['menu_perfiles'] 			= 'Perfiles';
+$lang['menu_personales']		= 'Personales';
+$lang['menu_admin'] 			= 'Administración';
+$lang['menu_empresas'] 			= 'Empresas';
+$lang['menu_productos'] 		= 'Productos';
+$lang['menu_laboratorios'] 		= 'Laboratorios';
+$lang['menu_presentaciones'] 	= 'Presentaciones';
+$lang['menu_categoria'] 		= 'Categorias';
 
 /* End of file Menu_lang.php */
 /* Location: ./application/languaje/es_mx/Menu_lang.php */

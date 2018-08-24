@@ -1,0 +1,82 @@
+<div class="container-fluid">
+    <form class="form-validate" method="post" action="{BASE_URL}admin/administracion/personales/process_save">
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <div class="card">
+                    <div class="card-content">
+                        <h4 class="card-title">{subtitle}</h4>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group label-floating has-success">
+                                    <label class="control-label" for="id_laboratorio">{productos_laboratorio} *</label>
+                                    {select_laboratorios}
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group label-floating has-success">
+                                    <label class="control-label" for="id_categoria">{productos_categoria} *</label>
+                                    {select_categorias}
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group checkbox">
+                                    <label>
+                                        <input type="checkbox" name="load_layout" id="load_layout">
+                                        Cargar layout
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group label-floating has-success">
+                                    <label class="control-label" for="nombre_generico">{productos_nombre_generico} *</label>
+                                    <input class="form-control validate required" name="nombre_generico" id="nombre_generico" type="text" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group label-floating has-success">
+                                    <label class="control-label" for="nombre_comercial">{productos_nombre_comercial}</label>
+                                    <input class="form-control validate" name="nombre_comercial" id="nombre_comercial" type="text" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group label-floating has-success">
+                                    <label class="control-label" for="id_presentacion">{productos_presentacion}</label>
+                                    {select_presentaciones}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group label-floating has-success">
+                                    <label class="control-label" for="concentracion">{productos_concentracion}</label>
+                                    <input class="form-control validate" name="concentracion" id="concentracion" type="text" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group label-floating has-success">
+                                    <label class="control-label" for="contenido">{productos_contenido} </label>
+                                    <input class="form-control validate" name="contenido" id="contenido" type="text" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="category"> <br>
+                            <span class="text-danger">{general_required_fields}</span>
+                        </div>
+                        <div class="pull-right">
+                            <a href="{BASE_URL}admin/productos" class="btn btn-link text-danger">
+                                {general_regresar}
+                            </a>
+                            <button type="submit" class="btn btn-success btn-fill submit">{general_guardar}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
